@@ -7,7 +7,7 @@ const pokemonFetch = async () => {
         }
 
         const dataF = await response.json()
-        console.log("Esta es la Data", dataF)
+        return dataF;
 
     }catch(error){
         console.log("Ha surgido un error", error);
@@ -15,4 +15,4 @@ const pokemonFetch = async () => {
     }
 }
 
-pokemonFetch();
+export { pokemonFetch };
