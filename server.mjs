@@ -3,6 +3,10 @@ import http from 'node:http';
 
 let data = null;
 
+(async () => {
+    data = await pokemonFetch()
+    console.log("Esta es la Data Importada", JSON.stringify(data))
+})();
 
 const servidor = http.createServer((req, res) => {
     if (req.url === '/data' && data) {
@@ -12,12 +16,6 @@ const servidor = http.createServer((req, res) => {
         res.end(`Error en la Solicitud`);
     }
 });
-
-
-(async () => {
-    const data = await pokemonFetch()
-    console.log("Esta es la Data Importada", JSON.stringify(data))
-})();
 
 servidor.listen(0, () => {
     console.log(`Respuesta Exitosa desde el servidor ${servidor.address().port}`);
